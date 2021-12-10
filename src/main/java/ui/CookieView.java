@@ -1,4 +1,4 @@
-package main.java.ui;
+package ui;
 
 /**
  * View class that prints to the command line.

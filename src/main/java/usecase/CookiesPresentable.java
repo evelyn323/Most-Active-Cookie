@@ -1,4 +1,4 @@
-package main.java.usecase;
+package usecase;
 
 /**
  * Interface that defines methods the presenter needs to display the cookies the use case passes in

@@ -1,7 +1,9 @@
-package main.java.controller;
+package controller;
 
-import main.java.presenter.CookiePresenter;
-import main.java.usecase.MostActiveCookie;
+import presenter.CookiePresenter;
+import usecase.MostActiveCookie;
+
+import java.io.File;
 
 /**
  * Receives and interprets the parameters passed in the Most Active Cookie command
@@ -16,6 +18,7 @@ public class MostActiveCookieInputs {
      * @param command the command the user entered
      */
     public MostActiveCookieInputs(String command) throws Exception {
+        System.out.println(new File("cookie_log.csv").getAbsolutePath());
         processCommandInput(command);
         mostActiveCookie = new MostActiveCookie(date, fileName);
     }

@@ -1,6 +1,6 @@
-package main.java.ui;
+package ui;
 
-import main.java.controller.MostActiveCookieInputs;
+import controller.MostActiveCookieInputs;
 
 import java.util.Scanner;
 

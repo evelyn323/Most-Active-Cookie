@@ -1,7 +1,7 @@
-package main.java.presenter;
+package presenter;
 
-import main.java.usecase.CookiesPresentable;
-import main.java.ui.CookieView;
+import usecase.CookiesPresentable;
+import ui.CookieView;
 
 /**
  * Class that tells the view which cookies to display

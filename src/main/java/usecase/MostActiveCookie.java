@@ -1,4 +1,4 @@
-package main.java.usecase;
+package usecase;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -21,8 +21,9 @@ public class MostActiveCookie {
      * @param date date to get most active cookies for
      * @param fileName the cookie file to get data from
      */
-    public MostActiveCookie(String date, String fileName) {
-        this.cookiesOnDate = new CookiesOnDate(fileName);
+    public MostActiveCookie(String date, String fileName) throws Exception {
+        this.cookiesOnDate = new CookiesOnDate();
+        cookiesOnDate.collectCookies(fileName);
         this.date = date;
     }
 

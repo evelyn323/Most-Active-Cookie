@@ -1,8 +1,9 @@
-package main.java.gateway;
+package gateway;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
+import java.io.File;
+import java.io.FileInputStream;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  * Read a CSV File
@@ -18,11 +19,14 @@ public class CSVFileReader implements Readable {
     @Override
     public String[] readFile(String fileName) throws Exception{
         ArrayList<String> fileLines = new ArrayList<>();
-        String line;
-        BufferedReader br = new BufferedReader(new FileReader(fileName));
-        while ((line = br.readLine()) != null) {
-                fileLines.add(line);
-            }
+
+        File f = new File(fileName);
+        FileInputStream fileInputStream = new FileInputStream(f);
+        Scanner scanner = new Scanner(fileInputStream);
+
+        while (scanner.hasNextLine()) {
+            fileLines.add(scanner.nextLine());
+        }
         return fileLines.toArray(new String[0]);
     }
 
