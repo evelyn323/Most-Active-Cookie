@@ -37,5 +37,7 @@ $ ./most_active_cookie cookie_log.csv -d 2018-12-08
 Output:
 
 SAZuXPGUrfbcn5UA
+
 4sMM2LxV07bPJzwf
+
 fbcn5UAVanZf6UtG
