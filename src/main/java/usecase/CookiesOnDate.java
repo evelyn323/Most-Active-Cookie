@@ -11,7 +11,7 @@ import java.util.HashMap;
  */
 public class CookiesOnDate {
     // Hashmap with dates as keys referring to an array of cookies that occurred on that date
-    HashMap<String, String[]> datesOfCookies;
+    private HashMap<String, String[]> datesOfCookies;
 
 
     // The file reader interface

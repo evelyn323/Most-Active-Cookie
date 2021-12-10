@@ -13,52 +13,59 @@ public class MostActiveCookie {
     // To get the cookies that occurred on that date
     private final CookiesOnDate cookiesOnDate;
 
-    // Date to get cookies for
-    private final String date;
+    private String date;
+
 
     /**
      * Constructor for this class. Initializes necessary instance attributes.
-     * @param date date to get most active cookies for
-     * @param fileName the cookie file to get data from
      */
-    public MostActiveCookie(String date, String fileName) throws Exception {
+    public MostActiveCookie(){
         this.cookiesOnDate = new CookiesOnDate();
-        cookiesOnDate.collectCookies(fileName);
+    }
+
+    /**
+     * Set the date to get cookies for
+     * @param date date to get most active cookies for
+     */
+    public void setDate(String date) {
         this.date = date;
     }
 
     /**
      * Find the most active cookies on this date
+     * @param fileName the cookie file to get data from
      */
-    public void findMostActive() {
+    public void findMostActive(String fileName) throws Exception {
+        cookiesOnDate.collectCookies(fileName);
+
         activeCookies = new ArrayList<>();
 
         String[] cookies = cookiesOnDate.getDatesOfCookies().get(date);
+
         Arrays.sort(cookies); // sort array so all the same cookies are together
 
-        int mostOccurrences = 0; // The greatest number of times any cookie has appeared
-        int currentOccurrences = 0; // The number of times current cookie has appeared
+        int mostOccurrences = 1; // The greatest number of times any cookie has appeared
+        int currentOccurrences = 1; // The number of times current cookie has appeared
         String currentCookie = "";
 
         for (String cookie: cookies) {
+
             if (currentCookie.equals(cookie)) {
                 currentOccurrences += 1;
             }
             else {
-                if (currentOccurrences > mostOccurrences) {
-                    // If current occurrences is greater than previous maximum, can discard previously stored cookies.
-                    mostOccurrences = currentOccurrences;
+                if (mostOccurrences < currentOccurrences) {
                     activeCookies = new ArrayList<>();
+                    activeCookies.add(currentCookie);
+                    mostOccurrences = currentOccurrences;
+                }
+                else if (mostOccurrences == currentOccurrences) {
                     activeCookies.add(cookie);
                 }
-                else if (currentOccurrences == mostOccurrences) {
-                    // If current occurrences is same as previous maximum, add the cookie to the array list
-                    activeCookies.add(cookie);
-                }
-                // setup for next cookie
+                currentOccurrences = 1;
                 currentCookie = cookie;
-                currentOccurrences = 0;
             }
+
         }
 
     }
@@ -68,6 +75,14 @@ public class MostActiveCookie {
      */
     public void displayActiveCookies(CookiesPresentable cookiesPresentable) {
         cookiesPresentable.displayMostActiveCookies(activeCookies.toArray(new String[0]));
+    }
+
+    /**
+     * Get the most active cookies
+     * @return the most active cookies on the set date
+     */
+    public String[] getActiveCookies() {
+        return activeCookies.toArray(new String[0]);
     }
 
 }

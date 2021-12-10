@@ -21,6 +21,9 @@ public class CookiesOnDateTest {
         cookiesOnDate = new CookiesOnDate();
     }
 
+    /**
+     * Test the collectCookies method
+     */
     @Test
     public void testCollectCookies() {
         try {
