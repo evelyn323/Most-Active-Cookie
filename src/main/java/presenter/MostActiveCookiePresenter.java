@@ -6,13 +6,13 @@ import ui.CookieView;
 /**
  * Class that tells the view which cookies to display
  */
-public class CookiePresenter implements CookiesPresentable {
-    private CookieView cookieView;
+public class MostActiveCookiePresenter implements CookiesPresentable {
+    private final CookieView cookieView;
 
     /**
      * Constructor for this class. Creates a new cookieView to display the cookies received
      */
-    public CookiePresenter() {
+    public MostActiveCookiePresenter() {
         cookieView = new CookieView();
     }
     /**
