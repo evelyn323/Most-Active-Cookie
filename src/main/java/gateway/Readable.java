@@ -1,5 +1,8 @@
 package gateway;
 
+/**
+ * Interface for a class that can read a file
+ */
 public interface Readable {
     /**
      * Reads the file given and stores the lines in an array that is returned.

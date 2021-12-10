@@ -9,6 +9,9 @@ import java.util.Scanner;
  */
 public class CookieCommandUserInput {
 
+    /**
+     * Collect the command from the user, then pass to the controller to process
+     */
     public void collectCommand() {
         Scanner scanner = new Scanner(System.in);
         String action = scanner.nextLine();

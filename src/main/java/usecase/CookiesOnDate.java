@@ -42,7 +42,7 @@ public class CookiesOnDate {
         for (String line : fileLines) {
             cookieAndDate = line.split(",");
             cookie = cookieAndDate[0];
-            date = dateFromTimeStamp(cookieAndDate[1]);
+            date = dateFromTimeStamp(cookieAndDate[1]); // Get the date from the timestamp
 
             if (!currentDate.equals(date) && !currentDate.equals("")){
                 datesOfCookies.put(currentDate, cookiesOnDate.toArray(new String[0]));
@@ -52,7 +52,7 @@ public class CookiesOnDate {
 
             currentDate = date;
         }
-        // add last timestamp to hashmap
+        // add last date to hashmap
         datesOfCookies.put(currentDate, cookiesOnDate.toArray(new String[0]));
 
     }

@@ -15,7 +15,6 @@ public class MostActiveCookie {
 
     private String date;
 
-
     /**
      * Constructor for this class. Initializes necessary instance attributes.
      */
@@ -48,30 +47,28 @@ public class MostActiveCookie {
         int currentOccurrences = 1; // The number of times current cookie has appeared
         String currentCookie = "";
 
+        // iterate over all cookies and see which ones occur the most
         for (String cookie: cookies) {
-
             if (currentCookie.equals(cookie)) {
                 currentOccurrences += 1;
             }
             else {
                 if (mostOccurrences < currentOccurrences) {
-                    activeCookies = new ArrayList<>();
+                    activeCookies = new ArrayList<>(); // Clear previously stored cookies
                     activeCookies.add(currentCookie);
                     mostOccurrences = currentOccurrences;
                 }
                 else if (mostOccurrences == currentOccurrences) {
                     activeCookies.add(cookie);
                 }
-                currentOccurrences = 1;
+                currentOccurrences = 1; // Reset occurrences
                 currentCookie = cookie;
             }
-
         }
-
     }
 
     /**
-     * pass the most active cookies on the date given to this class in the constructor to the presenter class
+     * Pass the most active cookies on the date given to this class in the constructor to the presenter class
      */
     public void displayActiveCookies(CookiesPresentable cookiesPresentable) {
         cookiesPresentable.displayMostActiveCookies(activeCookies.toArray(new String[0]));

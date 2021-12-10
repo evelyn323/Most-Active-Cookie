@@ -22,7 +22,7 @@ public class MostActiveCookieInputs {
     }
 
     /**
-     * Process the command input to get the fileName and date
+     * Process the command input to get the fileName and date and call on respective use case
      * @param command the command the user entered
      */
     private void processCommandInput(String command) throws Exception {
