@@ -24,8 +24,7 @@ public class CookieCommandUserInput {
         Scanner scanner = new Scanner(System.in);
         String action = scanner.nextLine();
         try {
-            mostActiveCookieController.processCommandInput(action);
-            mostActiveCookieController.getMostActiveCookie();
+            mostActiveCookieController.getMostActiveCookie(action);
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -11,6 +11,7 @@ import java.util.Arrays;
  */
 public class MostActiveCookieTest {
     private MostActiveCookie mostActiveCookie;
+    private TestPresenter testPresenter;
 
     /**
      * Setup before tests
@@ -18,7 +19,7 @@ public class MostActiveCookieTest {
     @Before
     public void setup() {
         mostActiveCookie = new MostActiveCookie();
-
+        testPresenter = new TestPresenter();
     }
 
     /**
@@ -30,8 +31,10 @@ public class MostActiveCookieTest {
             String[] expected = new String[]{"cookie1"};
             mostActiveCookie.setDate("2018-12-09");
             mostActiveCookie.findMostActive("src/test/resources/test1.csv");
-            String[] actual = mostActiveCookie.getActiveCookies();
-            assert(Arrays.equals(expected, actual));
+
+            mostActiveCookie.displayActiveCookies(testPresenter);
+
+            assert(Arrays.equals(expected, testPresenter.activeCookies));
         }
         catch (Exception ignored) {
             assert false;
@@ -48,8 +51,9 @@ public class MostActiveCookieTest {
             String[] expected = new String[]{"cookie2", "cookie4", "cookie5"};
             mostActiveCookie.setDate("2018-12-08");
             mostActiveCookie.findMostActive("src/test/resources/test1.csv");
-            String[] actual = mostActiveCookie.getActiveCookies();
-            assert(Arrays.equals(expected, actual));
+            mostActiveCookie.displayActiveCookies(testPresenter);
+
+            assert(Arrays.equals(expected, testPresenter.activeCookies));
         }
         catch (Exception ignored) {
             assert false;
@@ -65,11 +69,29 @@ public class MostActiveCookieTest {
             String[] expected = new String[]{"cookie4"};
             mostActiveCookie.setDate("2018-12-07");
             mostActiveCookie.findMostActive("src/test/resources/test1.csv");
-            String[] actual = mostActiveCookie.getActiveCookies();
-            assert(Arrays.equals(expected, actual));
+
+            mostActiveCookie.displayActiveCookies(testPresenter);
+
+            assert(Arrays.equals(expected, testPresenter.activeCookies));
         }
         catch (Exception ignored) {
             assert false;
+        }
+    }
+
+    /**
+     * Empty presenter class for testing
+     */
+    private static class TestPresenter implements CookiesPresentable {
+        private String[] activeCookies;
+
+        /**
+         * Test that when this method is called, the activeCookies are changed to expected value
+         * @param cookies The array of cookies to display
+         */
+        @Override
+        public void displayMostActiveCookies(String[] cookies) {
+            this.activeCookies = cookies;
         }
     }
 

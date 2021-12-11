@@ -35,13 +35,7 @@ public class MostActiveCookie {
      * @param fileName the cookie file to get data from
      */
     public void findMostActive(String fileName) throws Exception {
-        cookiesOnDate.collectCookies(fileName);
-
-        activeCookies = new ArrayList<>();
-
-        String[] cookies = cookiesOnDate.getDatesOfCookies().get(date);
-
-        Arrays.sort(cookies); // sort array so all the same cookies are together
+        String[] cookies = sortedCookies(fileName);
 
         int mostOccurrences = 1; // The greatest number of times any cookie has appeared
         int currentOccurrences = 1; // The number of times current cookie has appeared
@@ -67,6 +61,35 @@ public class MostActiveCookie {
         }
     }
 
+
+    /**
+     * Helper method to get the cookies sorted lexicographically
+     * @param fileName name of file to get cookies from
+     * @return lexicographically sorted cookies
+     * @throws Exception file not found
+     */
+    private String[] sortedCookies(String fileName) throws Exception {
+        cookiesOnDate.collectCookies(fileName);
+
+        activeCookies = new ArrayList<>();
+
+        String[] cookies = cookiesOnDate.getDatesOfCookies().get(date);
+        checkDateHasData(cookies);
+
+        Arrays.sort(cookies); // sort array so all the same cookies are together
+        return cookies;
+    }
+
+    /**
+     * Check if this date has cookies
+     * @throws Exception no cookies for the given date
+     */
+    private void checkDateHasData(String[] cookies) throws Exception {
+        if(cookies == null) {
+            throw new Exception ("No Cookies for this date");
+        }
+    }
+
     /**
      * Pass the most active cookies on the date given to this class in the constructor to the presenter class
      */
@@ -74,12 +97,5 @@ public class MostActiveCookie {
         cookiesPresentable.displayMostActiveCookies(activeCookies.toArray(new String[0]));
     }
 
-    /**
-     * Get the most active cookies
-     * @return the most active cookies on the set date
-     */
-    public String[] getActiveCookies() {
-        return activeCookies.toArray(new String[0]);
-    }
 
 }

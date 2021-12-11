@@ -15,6 +15,7 @@ public class MostActiveCookiePresenter implements CookiesPresentable {
     public MostActiveCookiePresenter() {
         cookieView = new CookieView();
     }
+
     /**
      * Tell the view to display these cookies
      * @param cookies The array of cookies to display

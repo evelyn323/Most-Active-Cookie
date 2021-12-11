@@ -44,17 +44,30 @@ public class CookiesOnDate {
             cookie = cookieAndDate[0];
             date = dateFromTimeStamp(cookieAndDate[1]); // Get the date from the timestamp
 
-            if (!currentDate.equals(date) && !currentDate.equals("")){
-                datesOfCookies.put(currentDate, cookiesOnDate.toArray(new String[0]));
-                cookiesOnDate = new ArrayList<>();
-            }
-            cookiesOnDate.add(cookie);
+            cookiesOnDate = newCookiesOnDate(currentDate, date, cookie, cookiesOnDate);
 
             currentDate = date;
         }
         // add last date to hashmap
         datesOfCookies.put(currentDate, cookiesOnDate.toArray(new String[0]));
 
+    }
+
+    /**
+     * Helper method to decide what the new cookiesOnDate should be
+     * @param currentDate current date of cookies being processed
+     * @param date The date of the current cookie
+     * @param cookie The current cookie
+     * @param cookiesOnDate The array of cookies that occurred on the currentDate
+     * @return cookiesOnDate
+     */
+    private ArrayList<String> newCookiesOnDate(String currentDate, String date, String cookie, ArrayList<String> cookiesOnDate) {
+        if (!currentDate.equals(date) && !currentDate.equals("")){
+            datesOfCookies.put(currentDate, cookiesOnDate.toArray(new String[0]));
+            cookiesOnDate = new ArrayList<>();
+        }
+        cookiesOnDate.add(cookie);
+        return cookiesOnDate;
     }
 
     /**

@@ -19,11 +19,25 @@ public class MostActiveCookieController {
         mostActiveCookie = new MostActiveCookie();
     }
 
+
+    /**
+     * Get the most active cookie (displayed by presenter)
+     * @param command the command the user entered
+     */
+    public void getMostActiveCookie(String command) throws Exception{
+        processCommandInput(command);
+
+        mostActiveCookie.setDate(date);
+        mostActiveCookie.findMostActive(fileName);
+
+        mostActiveCookie.displayActiveCookies(new MostActiveCookiePresenter());
+    }
+
     /**
      * Process the command input to get the fileName and date and call on respective use case
      * @param command the command the user entered
      */
-    public void processCommandInput(String command) throws Exception {
+    private void processCommandInput(String command) throws Exception {
         String[] commandComponents = command.split(" ");
         if (commandComponents[0].equals("most_active_cookie")) {
             fileName = commandComponents[1];
@@ -32,16 +46,6 @@ public class MostActiveCookieController {
         else {
             throw new Exception ("Invalid Command");
         }
-    }
-
-    /**
-     * Get the most active cookie
-     */
-    public void getMostActiveCookie() throws Exception{
-        mostActiveCookie.setDate(date);
-        mostActiveCookie.findMostActive(fileName);
-
-        mostActiveCookie.displayActiveCookies(new MostActiveCookiePresenter());
     }
 
 }
