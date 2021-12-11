@@ -11,6 +11,8 @@ Tests can be found in src/test/java
 
 Please note that the most_active_cookie command currently takes filepath from the content root (i.e. the src folder).
 
+Existing cookie logs for testing can be found in the resources folder (in both the main and test folders).
+
 
 ## Problem Description
 
