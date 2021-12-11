@@ -1,5 +1,17 @@
 # Most-Active-Cookie
 
+
+## Program Information
+
+Program is written in Java 11
+
+To run the program, run the Main class in src/main/java/Main.
+
+Tests can be found in src/test/java
+
+Please note that the most_active_cookie command currently takes filepath from the content root (i.e. the src folder).
+
+
 ## Problem Description
 
 
@@ -62,4 +74,3 @@ We're looking for a concise, maintainable, extendable and correct solution. We'r
 •	knowledge of build systems, testing frameworks, etc.
 
 •	clean coding practices (meaningful names, clean abstractions, etc.)
-
